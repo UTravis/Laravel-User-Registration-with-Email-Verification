@@ -7,6 +7,12 @@
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
+                @if (session('verified') !== null)
+                    <div class="alert alert-primary" role="alert" class="text-center">
+                        <strong>{{session('verified')}}</strong>
+                    </div>
+                @endif
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

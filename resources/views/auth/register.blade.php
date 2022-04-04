@@ -6,19 +6,38 @@
         <div class="col-md-8">
 
             <!-- Displays Messages -->
-            <div class="flash-message">
-                    @foreach( ['danger, success'] as $msg )
-                        @if(Session::has('alert-' . $msg))
-                            <p class="alert alert-{{$msg}}"> {{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> </p>
-                        @endif
-                    @endforeach
-            </div>
+            {{-- <div class="section">
+                @foreach( ['danger, success'] as $msg )
+                    @if(Session::has('alert-' . $msg))
+                        <p class="alert alert-{{$msg}}"> {{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> </p>
+                    @endif
+                @endforeach
+            </div> --}}
 
+            @if(session('success') !== null)
+                <div class="alert alert-primary" role="alert">
+                    <strong>{{session('success')}}</strong>
+                </div>
+            @elseif(session('danger') !== null)
+                <div class="alert alert-danger" role="alert">
+                    <strong>{{session('danger')}}</strong>
+                </div>
+            @endif
+
+
+            @if (session('not-verified') !== null)
+                <div class="alert alert-danger" role="alert" class="text-center">
+                    <strong>{{ session('not-verified') }}</strong>
+                </div>
+            @endif
+
+            
+            {{-- End of display message --}}
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('new.register') }}">
                         @csrf
 
                         <div class="row mb-3">

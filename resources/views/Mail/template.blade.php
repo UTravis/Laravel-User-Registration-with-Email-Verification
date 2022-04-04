@@ -1,3 +1,5 @@
-<h1>Welcome!!!!</h1>
+<h1>Welcome {{ $mail_data['name'] }} !!!</h1>
 <h3> Thanks for signing up for our project.</h3>
-<p>Click this link to verify your account <strong> {{$mail_data['verification_code']}} </strong></p>
+<br>
+Click this <a href="http://127.0.0.1:8000/verification?code={{$mail_data['verification_code']}}">here</a> to verify your account.
+<p>Thank You.</p>

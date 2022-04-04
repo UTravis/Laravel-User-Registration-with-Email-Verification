@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//custom route to register users
+Route::post('/new-register', [RegisterController::class, 'register'])->name('new.register');
+Route::get('/verification', [RegisterController::class, 'verifyUser'])->name('registration.verify');

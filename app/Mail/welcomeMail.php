@@ -29,6 +29,6 @@ class welcomeMail extends Mailable
      */
     public function build()
     {
-        return $this->from( env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME') )->subject('Welcome Mail')->view('Mail.template', ['mail_data' => $this->mail_data]);
+        return $this->from( env('MAIL_FROM_ADDRESS'), 'Registration App' )->subject('Welcome Mail')->view('Mail.template', ['mail_data' => $this->mail_data]);
     }
 }
